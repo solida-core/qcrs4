@@ -125,12 +125,12 @@ def get_tumoral_bam(wildcards):
     # print(wildcards.sample)
     return samples_master[wildcards.sample]["tumor_bam"][0]
 
-def get_normal_bam(wildcards):
+def get_bam(wildcards):
     with open(config["samples"],'r') as file:
         samples_master = yaml.load(file,Loader=yaml.FullLoader)
         samples_master.keys()
     # print(wildcards.sample)
-    return samples_master[wildcards.sample]["normal_bam"][0]
+    return samples_master[wildcards.sample][0]
 
 def select_filtered(wildcards):
     with open(config["samples"],'r') as file:
