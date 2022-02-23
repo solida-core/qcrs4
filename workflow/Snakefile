@@ -1,0 +1,23 @@
+from snakemake.utils import min_version
+
+##### set minimum snakemake version #####
+min_version("6.15.0")
+
+
+##### setup report #####
+configfile: "config/config.yaml"
+
+
+##### load rules #####
+include: "rules/common.smk"
+include: "rules/coverage.smk"
+
+
+
+##### target rules #####
+
+rule all:
+    input:
+# CALCULATE COVERAGE
+        expand("results/stats/{sample}_coverage.tsv",sample=list(samples_master.keys()))
+

@@ -1,0 +1,23 @@
+# path or URL to sample sheet (TSV format, columns: sample, condition, ...)
+
+samples: config/samples.yaml
+
+# reference files
+ref:
+  species: homo_sapiens
+  basepath: /path/to/reference_master_folder
+  provider: ucsc
+  release: hg19
+  fasta: genome.fasta
+
+
+params:
+  jvarkit:
+    bamstats04: ""
+  multiqc: "--force --interactive --cl_config 'max_table_rows: 700'"
+
+
+processing:
+  interval_list: "/path/to/exons.hg19refseq.bed"
+  tmp_dir: "/path/to/tmp_dir"
+  base_tmp: "/tmp"
