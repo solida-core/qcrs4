@@ -1,0 +1,4 @@
+sampleA:
+ - /path/to/file.bam
+sampleB:
+ - /path/to/file.bam
