@@ -1,0 +1,63 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+properties:
+  samples:
+    type: string
+
+  ref:
+    type: object
+    properties:
+      species:
+        type: string
+      basepath:
+        type: string
+      provider:
+        type: string
+      release:
+        type: string
+      fasta:
+        type: string
+    required:
+      - basepath
+      - provider
+      - release
+      - fasta
+
+  processing:
+    type: object
+    properties:
+      interval_list:
+        type: string
+    required:
+      - interval_list
+
+  params:
+    type: object
+    properties:
+      gatk:
+        type: object
+        properties:
+          Mutect:
+            type: string
+          SelectVariants:
+            type: string
+          Funcotator:
+            type: string
+        required:
+          - Mutect
+          - SelectVariants
+          - Funcotator
+      multiqc:
+        type: string
+    required:
+      - multiqc
+
+required:
+  - samples
+  - ref
+  - processing
+  - params
