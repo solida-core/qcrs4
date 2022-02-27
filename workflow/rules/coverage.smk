@@ -38,7 +38,7 @@ rule format_results:
         tsv="results/stats/{sample}_coverage.tsv"
     output:
         tsv="results/tsv/{sample}.coverage.tsv",
-        tsv="results/xlsx/{sample}.coverage.xlsx"
+        xlsx="results/xlsx/{sample}.coverage.xlsx"
     params:
         intervals=config.get("processing").get("interval_list")
     conda:
