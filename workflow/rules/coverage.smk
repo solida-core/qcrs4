@@ -32,3 +32,19 @@ rule run_bamstat:
         "{input.bam} "
         "-o {output.tsv} "
 
+
+rule format_results:
+    input:
+        tsv="results/stats/{sample}_coverage.tsv"
+    output:
+        tsv="results/tsv/{sample}.coverage.tsv",
+        tsv="results/xlsx/{sample}.coverage.xlsx"
+    params:
+        intervals=config.get("processing").get("interval_list")
+    conda:
+        "../envs/r_env.yaml"
+    threads: conservative_cpu_count(reserve_cores=2, max_cores=99)
+    resources:
+        tmpdir = config.get("processing").get("tmp_dir")
+    script:
+        "../scripts/parse_results.R"
