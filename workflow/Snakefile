@@ -19,6 +19,6 @@ include: "rules/coverage.smk"
 rule all:
     input:
 # CALCULATE COVERAGE
-        expand("results/stats/{sample}_coverage.tsv",sample=list(samples_master.keys()))
+        expand("results/stats/{sample}_coverage.tsv",sample=list(samples_master.keys())),
 # PARSE RESULTS
         expand("results/tsv/{sample}.coverage.tsv",sample=list(samples_master.keys()))
