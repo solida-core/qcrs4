@@ -13,11 +13,12 @@ ref:
 
 params:
   jvarkit:
-    bamstats04: ""
+    bamstats04: "path/to/jvarkit/dist/bamstats04.jar"
   multiqc: "--force --interactive --cl_config 'max_table_rows: 700'"
 
 
 processing:
-  interval_list: "/path/to/exons.hg19refseq.bed"
+  panel_intervals: "path/to/panel_intervals.bed"
+  canonical_intervals: "path/to/canonical_intervals.bed"
   tmp_dir: "/path/to/tmp_dir"
   base_tmp: "/tmp"

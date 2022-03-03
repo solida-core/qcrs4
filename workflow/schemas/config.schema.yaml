@@ -30,10 +30,12 @@ properties:
   processing:
     type: object
     properties:
-      interval_list:
+      panel_intervals:
+        type: string
+      canonical_intervals:
         type: string
     required:
-      - interval_list
+      - panel_intervals
 
   params:
     type: object
