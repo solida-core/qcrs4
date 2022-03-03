@@ -61,7 +61,8 @@ rule format_results:
         panel="results/stats/{sample}_panel_coverage.tsv",
         canonical="results/stats/{sample}_canonical_coverage.tsv"
     output:
-        tsv="results/tsv/{sample}.coverage.tsv",
+        panel="results/tsv/{sample}.panel_coverage.tsv",
+        canonical="results/tsv/{sample}.canonical_coverage.tsv",
         xlsx="results/xlsx/{sample}.coverage.xlsx"
     params:
         panel_intervals=config.get("processing").get("panel_intervals"),
