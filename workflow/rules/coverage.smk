@@ -58,7 +58,7 @@ rule canonical_coverage:
 
 rule format_results:
     input:
-        panel="results/stats/{sample}_coverage.tsv",
+        panel="results/stats/{sample}_panel_coverage.tsv",
         canonical="results/stats/{sample}_canonical_coverage.tsv"
     output:
         tsv="results/tsv/{sample}.coverage.tsv",
