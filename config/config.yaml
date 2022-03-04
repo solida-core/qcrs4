@@ -14,6 +14,7 @@ ref:
 params:
   jvarkit:
     bamstats04: "path/to/jvarkit/dist/bamstats04.jar"
+    min_coverage: 20
   multiqc: "--force --interactive --cl_config 'max_table_rows: 700'"
 
 

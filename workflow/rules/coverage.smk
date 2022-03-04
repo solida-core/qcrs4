@@ -20,7 +20,8 @@ rule panel_coverage:
         custom=java_params(tmp_dir=config.get("processing").get("tmp_dir"), multiply_by=5),
         genome=resolve_single_filepath(*references_abs_path("ref"), config.get("ref").get("fasta")),
         intervals=config.get("processing").get("panel_intervals"),
-        param=config.get("params").get("jvarkit").get("bamstats04")
+        param=config.get("params").get("jvarkit").get("bamstats04"),
+        mincov=config.get("params").get("jvarkit").get("min_coverage")
     threads: conservative_cpu_count(reserve_cores=2, max_cores=99)
     resources:
         tmpdir = config.get("processing").get("tmp_dir")
@@ -28,6 +29,7 @@ rule panel_coverage:
         "java -jar "
         "{params.param} "
         "-B {params.intervals} "
+        "--cov {params.mincov} "
         "-R {params.genome} "
         "{input.bam} "
         "-o {output.tsv} "
@@ -43,7 +45,8 @@ rule canonical_coverage:
         custom=java_params(tmp_dir=config.get("processing").get("tmp_dir"), multiply_by=5),
         genome=resolve_single_filepath(*references_abs_path("ref"), config.get("ref").get("fasta")),
         intervals=config.get("processing").get("canonical_intervals"),
-        param=config.get("params").get("jvarkit").get("bamstats04")
+        param=config.get("params").get("jvarkit").get("bamstats04"),
+        mincov=config.get("params").get("jvarkit").get("min_coverage")
     threads: conservative_cpu_count(reserve_cores=2, max_cores=99)
     resources:
         tmpdir = config.get("processing").get("tmp_dir")
@@ -51,6 +54,7 @@ rule canonical_coverage:
         "java -jar "
         "{params.param} "
         "-B {params.intervals} "
+        "--cov {params.mincov} "
         "-R {params.genome} "
         "{input.bam} "
         "-o {output.tsv} "
